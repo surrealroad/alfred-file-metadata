@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>com.surrealroad.alfred-metadata</string>
+	<key>connections</key>
+	<dict>
+		<key>0E81CBDF-0AB3-4968-95AC-FF4B301D3E12</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F7DF2AD1-F4B7-4A79-9C02-68C51465EF3C</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>59D8D474-31AF-436A-B07F-EFB2A09475EE</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>224710A6-BACF-4B60-8E05-A8C69D0E4B0F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>AAC89688-176B-49AD-95A4-7F3698B83795</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>F7612AD8-1761-4870-B7CD-CD43E2E276B3</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>F7DF2AD1-F4B7-4A79-9C02-68C51465EF3C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>38180642-5E51-4BB0-A0C9-DA4A997839E4</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>224710A6-BACF-4B60-8E05-A8C69D0E4B0F</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Jack James</string>
+	<key>description</key>
+	<string>Show metadata for selected file</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>File Metadata</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>acceptsmulti</key>
+				<false/>
+				<key>filetypes</key>
+				<array/>
+				<key>name</key>
+				<string>Metadata (Copy to Clipboard)</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.action</string>
+			<key>uid</key>
+			<string>0E81CBDF-0AB3-4968-95AC-FF4B301D3E12</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>acceptsmulti</key>
+				<false/>
+				<key>filetypes</key>
+				<array/>
+				<key>name</key>
+				<string>Metadata (Show)</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.action</string>
+			<key>uid</key>
+			<string>AAC89688-176B-49AD-95A4-7F3698B83795</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>1</integer>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>meta</string>
+				<key>runningsubtext</key>
+				<string>Reading metadata</string>
+				<key>script</key>
+				<string>property workflowFolder: do shell script "pwd"
+property lib: load script POSIX file (workflowFolder &amp; "/alfred_library.scpt")
+
+on run	set q to "{query}"		set cmd to "./mediainfo" &amp; space &amp; quoted form of q	set metadata to do shell script cmd
+	set cmd to "./openmeta -p" &amp; space &amp; quoted form of q	set openmeta to do shell script cmd
+	return lib's fileMeta(q, metadata, openmeta)
+end run
+</string>
+				<key>subtext</key>
+				<string>Return metadata for a file</string>
+				<key>title</key>
+				<string>Metadata</string>
+				<key>type</key>
+				<integer>6</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>59D8D474-31AF-436A-B07F-EFB2A09475EE</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>script</key>
+				<string>./mediainfo {query}</string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>F7DF2AD1-F4B7-4A79-9C02-68C51465EF3C</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Metadata</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>38180642-5E51-4BB0-A0C9-DA4A997839E4</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>224710A6-BACF-4B60-8E05-A8C69D0E4B0F</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+tell application "Alfred 2"	search "meta " &amp; qend tell
+end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>F7612AD8-1761-4870-B7CD-CD43E2E276B3</string>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Shows metadata for a file in Alfred
+
+To use, either type "meta /path/to/file" or use the file actions "Metadata (Show)" and "Metadata (Copy to Clipboard)" on a selected file.
+
+"Show" will display each metadata attribute separately in Alfred, with the actioned one copied to the clipboard.
+"Copy to clipboard" will copy all metadata found for the item.
+
+Currently works best on media files, only rudimentary data will be returned for other types.
+
+Credit to open source application MediaInfo 0.7.62 (http://mediainfo.sourceforge.net/) for doing the heavy lifting (please consider donating there if you find this useful), and openmeta (https://code.google.com/p/openmeta) for ratings and tags
+
+Changelog:
+Sunday, 31 March 2013 – Includes spotlight comments, openmeta ratings and tags
+Wednesday, 20 March 2013 – First release.</string>
+	<key>uidata</key>
+	<dict>
+		<key>0E81CBDF-0AB3-4968-95AC-FF4B301D3E12</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>224710A6-BACF-4B60-8E05-A8C69D0E4B0F</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>38180642-5E51-4BB0-A0C9-DA4A997839E4</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>59D8D474-31AF-436A-B07F-EFB2A09475EE</key>
+		<dict>
+			<key>ypos</key>
+			<real>130</real>
+		</dict>
+		<key>AAC89688-176B-49AD-95A4-7F3698B83795</key>
+		<dict>
+			<key>ypos</key>
+			<real>240</real>
+		</dict>
+		<key>F7612AD8-1761-4870-B7CD-CD43E2E276B3</key>
+		<dict>
+			<key>ypos</key>
+			<real>240</real>
+		</dict>
+		<key>F7DF2AD1-F4B7-4A79-9C02-68C51465EF3C</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>http://www.surrealroad.com</string>
+</dict>
+</plist>
