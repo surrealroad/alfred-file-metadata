@@ -83,21 +83,50 @@
 			<string>alfred.workflow.trigger.action</string>
 			<key>uid</key>
 			<string>0E81CBDF-0AB3-4968-95AC-FF4B301D3E12</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>acceptsmulti</key>
-				<false/>
-				<key>filetypes</key>
-				<array/>
-				<key>name</key>
-				<string>Metadata (Show)</string>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>script</key>
+				<string>./mediainfo {query}</string>
+				<key>type</key>
+				<integer>0</integer>
 			</dict>
 			<key>type</key>
-			<string>alfred.workflow.trigger.action</string>
+			<string>alfred.workflow.action.script</string>
 			<key>uid</key>
-			<string>AAC89688-176B-49AD-95A4-7F3698B83795</string>
+			<string>F7DF2AD1-F4B7-4A79-9C02-68C51465EF3C</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>lastpathcomponent</key>
+				<false/>
+				<key>onlyshowifquerypopulated</key>
+				<true/>
+				<key>output</key>
+				<integer>0</integer>
+				<key>removeextension</key>
+				<false/>
+				<key>sticky</key>
+				<false/>
+				<key>text</key>
+				<string>{query}</string>
+				<key>title</key>
+				<string>Metadata</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.notification</string>
+			<key>uid</key>
+			<string>38180642-5E51-4BB0-A0C9-DA4A997839E4</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -132,44 +161,8 @@ end run
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>59D8D474-31AF-436A-B07F-EFB2A09475EE</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>escaping</key>
-				<integer>63</integer>
-				<key>script</key>
-				<string>./mediainfo {query}</string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>F7DF2AD1-F4B7-4A79-9C02-68C51465EF3C</string>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>lastpathcomponent</key>
-				<false/>
-				<key>onlyshowifquerypopulated</key>
-				<true/>
-				<key>output</key>
-				<integer>0</integer>
-				<key>removeextension</key>
-				<false/>
-				<key>sticky</key>
-				<false/>
-				<key>text</key>
-				<string>{query}</string>
-				<key>title</key>
-				<string>Metadata</string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.notification</string>
-			<key>uid</key>
-			<string>38180642-5E51-4BB0-A0C9-DA4A997839E4</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -183,6 +176,25 @@ end run
 			<string>alfred.workflow.output.clipboard</string>
 			<key>uid</key>
 			<string>224710A6-BACF-4B60-8E05-A8C69D0E4B0F</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>acceptsmulti</key>
+				<false/>
+				<key>filetypes</key>
+				<array/>
+				<key>name</key>
+				<string>Metadata (Show)</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.trigger.action</string>
+			<key>uid</key>
+			<string>AAC89688-176B-49AD-95A4-7F3698B83795</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -198,6 +210,8 @@ end alfred_script</string>
 			<string>alfred.workflow.action.applescript</string>
 			<key>uid</key>
 			<string>F7612AD8-1761-4870-B7CD-CD43E2E276B3</string>
+			<key>version</key>
+			<integer>0</integer>
 		</dict>
 	</array>
 	<key>readme</key>
@@ -210,9 +224,10 @@ To use, either type "meta /path/to/file" or use the file actions "Metadata (Show
 
 Currently works best on media files, only rudimentary data will be returned for other types.
 
-Credit to open source application MediaInfo 0.7.62 (http://mediainfo.sourceforge.net/) for doing the heavy lifting (please consider donating there if you find this useful), and openmeta (https://code.google.com/p/openmeta) for ratings and tags
+Credit to open source application MediaInfo 0.7.7 (http://mediainfo.sourceforge.net/) for doing the heavy lifting (please consider donating there if you find this useful), and openmeta (https://code.google.com/p/openmeta) for ratings and tags
 
 Changelog:
+Thursday, 4 September 2014 – Updated MediaInfo to 0.7.7
 Sunday, 31 March 2013 – Includes spotlight comments, openmeta ratings and tags
 Wednesday, 20 March 2013 – First release.</string>
 	<key>uidata</key>
